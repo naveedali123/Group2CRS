@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<br><br>
+<style>  
+   
+    </style>    
+<p>
+<img align="left" src="https://images.creativemarket.com/0.1.0/ps/7953008/600/400/m2/fpnw/wm0/233-administrator-.jpg?1584539191&s=b60ee347558c185d064d982abe1a8b86&fmt=webp" width="600" height="400" >   
+</p>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                     <h4 style="text-align: center;">Customer's Registration Page</h4>
+                 </th>
+                
+             </tr>
+        </thead>
+        <br>
+        <tbody>
+            <tr>
+               
+                    <div class="table">
+                        <form (ngSubmit)="registerCustomer()">
+                            <div class="form-group">
+                           
+                                <input type="text" class="form-control" name="customerEmail"
+                                    [(ngModel)]="customer.customerEmail" placeholder="Enter email">
+                            </div>
+
+                            <div class="form-group">
+                         
+                                <input type="password" class="form-control" name="customerPassword"
+                                    [(ngModel)]="customer.customerPassword" placeholder="Enter password">
+                            </div>
+
+                            <div class="form-group">
+                              
+                                <input type="text" class="form-control" name="customerName"
+                                    [(ngModel)]="customer.customerName" placeholder="Enter name">
+                            </div>
+
+                            <div class="form-group">
+                             
+                                <input type="text" class="form-control" name="customerMobile"
+                                    [(ngModel)]="customer.customerMobile" placeholder="Enter mobile number">
+                            </div>
+
+                            <div class="form-group">
+                         
+                                <input type="text" class="form-control" name="customerAddress"
+                                    [(ngModel)]="customer.customerAddress" placeholder="Enter address">
+                            </div>
+
+                            <div class="form-group">
+                          
+                                <input type="text" class="form-control" name="customerPincode"
+                                    [(ngModel)]="customer.customerPincode" placeholder="Enter pincode">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+<br><br>
+<style>  
+   
+    </style>    
+<p>
+<img align="left" src="https://thumbs.dreamstime.com/z/server-room-equipping-network-administrator-s-workplace-monitoring-database-working-financial-institution-software-employee-126510749.jpg" width="550" height="450" >   
+</p>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <h4 style="text-align: center;" > Admin's Login Page</h4>
+                </th>
+            </tr>
+        </thead>
+        <br>
+        <tbody>
+            <tr>
+            
+                    <div class="table">
+                        <form [formGroup]="loginForm" (ngSubmit)="validateAdmin()">
+                            <div class="form-group">
+                            
+                                <input type="text" class="form-control" name="adminEmail"
+                                    formControlName="adminEmail" placeholder="Enter email">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="adminPassword"
+                                    formControlName="adminPassword" placeholder="Enter password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+
+        
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

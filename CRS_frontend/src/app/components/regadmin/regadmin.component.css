@@ -1,0 +1,23 @@
+.container{
+    
+        display: flex;
+        justify-content: right;
+        width: 40%;
+
+     
+}
+.bg {
+	/* The image used */
+	background-image: url("https://img.wallpapersafari.com/desktop/800/450/69/20/FgHujO.jpg");
+  
+	/* Full height */
+	height: 75vh;
+	margin: 0;
+	padding: 0;
+  
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+  }

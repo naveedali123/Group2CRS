@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+
+    
+    <div class="xyz " style="justify-content: center;" >
+ 
+    <div style="padding: 2rem;">
+        <button type="submit" class="button" (click)="viewManagers()">View Managers</button>
+    </div>
+    <div style="padding: 2rem;">
+        <button type="submit" class="button" (click)="viewEngineers()">View Engineers</button>
+    </div>
+    <div style="padding: 2rem;">
+        <button type="submit" class="button" (click)="viewCustomers()">View Customers</button>
+    </div>
+    <div style="padding: 2rem;">
+        <button type="submit" class="button" (click)="viewComplaints()">View Complaints</button>
+    </div>
+    <div style="padding: 2rem;">
+        <button type="submit" class="button" (click)="viewFeedbacks()">View Feedbacks</button>
+    </div>
+   
+    <!-- <div style="padding: 1rem;">
+        <button type="submit" class="btn btn-primary">View Engineers Duty Assignments</button>
+    </div> -->
+</div>
+<div class="xyz" style="justify-content: center;">
+    <div  style="padding: 2rem;">
+        <a href="/regmanager"><button  class="button">Add Manager</button></a><br>
+    </div><br>
+    <div  style="padding: 2rem;">
+        <a href="/regengineer"><button  class="button">Add Engineer</button></a><br>
+    </div><br>
+</div><br>
+<div *ngIf="anyButtonClicked" class="container" style="width: 20%;">
+    <button (click)="closeAll()" class="btn btn-danger">Close All</button><br>
+</div><br>
+<!-- ------------------------------------Managers------------------------------------ -->
+<!-- view Managers -->
+<div *ngIf="viewManagersStatus" style="width:100%;"><br>
+    <div class="head" style="width:100%" >
+     Managers 
+    </div>
+<br>
+
+    <table class="center" >
+        <thead>
+            <tr>
+                <th scope="col">Manager Email</th>
+                <th scope="col">Manager Name</th>
+                <th scope="col">Manager Pincode</th>
+                <th scope="col">Delete Manager</th>
+                <th scope="col">Edit Manager Details</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr *ngFor="let manager of managers">
+                <td scope="row">{{manager.managerEmail}}</td>
+                <td>{{manager.managerName}}</td>
+                <td>{{manager.managerPincode}}</td>
+                <td><button (click)="deleteManager(manager)" class="btn btn-danger">Delete</button>
+                </td>
+                <td><button (click)="updateManager(manager)" class="btn btn-primary">Update</button>
+            </tr><br>
+            <div class="container">
+            <tr *ngIf="updateManagerStatus">
+                <div style="width: 100%;">
+                    <form (ngSubmit)="newManagerUpdates()">
+                        <h4>Update Manager Pincode</h4>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="managerPincode"
+                                [(ngModel)]="managerUpdating.managerPincode" placeholder="Enter new pincode">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </tr>
+            </div>
+        </tbody>
+    </table>
+</div><br>
+
+<!-- ------------------------------------Engineers------------------------------------ -->
+<!-- View Engineers -->
+<div *ngIf="viewEngineersStatus"  style="width: 100%;"><br>
+    <div class="head">
+        <h4>Engineers</h4>
+    </div><br>
+    <table class="center">
+        <thead>
+            <tr>
+                <th scope="col">Engineer Email</th>
+                <th scope="col">Engineer Name</th>
+
+                <th scope="col">Delete Engineer</th>
+            </tr>
+        </thead>
+       
+        <tbody>
+            <tr *ngFor="let engineer of engineers">
+                <td scope="row">{{engineer.engineerEmail}}</td>
+                <td>{{engineer.engineerName}}</td>
+
+                <td><button (click)="deleteEngineer(engineer)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div><br>
+<!-- ------------------------------------Customers------------------------------------ -->
+<!-- View Customers -->
+<div *ngIf="viewCustomersStatus" style="width: 100%;"><br>
+    <div class="head">
+        <h4>Customers</h4>
+    </div><br>
+    <table class="center">
+        <thead>
+            <tr>
+                <th scope="col">Customer Email</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Customer Mobile</th>
+                <th scope="col">Customer Address</th>
+                <th scope="col">Customer Pincode</th>
+                <th scope="col">Delete Customer</th>
+                <th scope="col">Edit Customer Details</th>
+
+
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let customer of customers">
+                <td scope="row">{{customer.customerEmail}}</td>
+                <td>{{customer.customerName}}</td>
+                <td>{{customer.customerMobile}}</td>
+                <td>{{customer.customerAddress}}</td>
+                <td>{{customer.customerPincode}}</td>
+
+                <td><button (click)="deleteCustomer(customer)" class="btn btn-danger">Delete</button>
+                </td>
+                <td><button (click)="updateCustomer(customer)" class="btn btn-primary">Update</button>
+                </td>
+            </tr><br>
+            <tr *ngIf="updateCustomerStatus">
+                <div class="form-center">
+                    <form (ngSubmit)="newCustomerUpdates()">
+                        <h4>Update Customer Pincode</h4><br>
+                        <div class="form-group">
+                        Pin Code :    <input type="text" class="form-control" name="customerPincode"
+                                [(ngModel)]="customerUpdating.customerPincode" placeholder="Enter new pincode">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+
+</div><br>
+<!-- ------------------------------------Complaints------------------------------------ -->
+<!-- View Complaints -->
+<div *ngIf="viewComplaintsStatus"  style="width: 100%;"><br>
+    <div class="head">
+        <h4>Complaints</h4>
+    </div><br>
+    <table class="center">
+        <thead>
+            <tr>
+                <th scope="col">Ticket Id</th>
+                <th scope="col">Customer Email</th>
+                <th scope="col">Complaint</th>
+                <th scope="col">Pincode</th>
+                <th scope="col">status</th>
+                <th scope="col">Delete Complaint</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let complaint of complaints">
+                <td scope="row">{{complaint.ticketId}}</td>
+                <td>{{complaint.customerEmail}}</td>
+                <td>{{complaint.complaint}}</td>
+                <td>{{complaint.pincode}}</td>
+                <td>{{complaint.status}}</td>
+                <td><button (click)="deleteComplaint(complaint)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <br>
+            <tr *ngIf="updateComplaintStatus">
+                <div class="form-center">
+                    <form (ngSubmit)="newComplaintUpdates()">
+                        <h4>Update Complaint Pincode</h4><br>
+                        <div class="form-group">
+                           <label> Enter Email</label><br> <input type="text" class="form-control" name="customerEmail"
+                                [(ngModel)]="complaintUpdating.customerEmail" placeholder="Enter email">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Enter Pincode</label>   <input type="text" class="form-control" name="pincode"
+                                [(ngModel)]="complaintUpdating.pincode" placeholder="Enter pincode">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Enter complaint</label>  <input type="text" class="form-control" name="complaint"
+                                [(ngModel)]="complaintUpdating.complaint" placeholder="Enter complaint">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Enter status</label> <input type="text" class="form-control" name="status" [(ngModel)]="complaintUpdating.status"
+                                placeholder="Enter status">
+                        </div>
+                       <button type="submit" class="btn btn-primary">Update</button>
+                      
+                    </form>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<br>
+<!-- ------------------------------------Feedbacks------------------------------------ -->
+<!-- view Feedbacks -->
+<div *ngIf="viewFeedbacksStatus" style="width: 100%;">
+
+    <br>
+    <div class="head">
+        <h4>Feedbacks</h4>
+    </div><br>
+    <table class="center">
+        <thead>
+            <tr>
+                <th style="padding-right: 5px;">Feedback Id</th>
+                <th style="padding-right: 5px;">Ticket Id</th>
+                <th style="padding-right: 5px;">Customer Email</th>
+                <th style="padding-right: 5px;">Feedback</th>
+                <th style="padding-right: 5px;">Delete Feedback</th>
+                
+            </tr>
+        </thead>
+      
+        <tbody>
+            <tr *ngFor="let feedback of feedbacks">
+                <td style="padding-right: 5px;" scope="row">{{feedback.feedbackId}}</td>
+                <td style="padding-right: 5px;">{{feedback.ticketId}}</td>
+                <td style="padding-right: 5px;">{{feedback.customerEmail}}</td>
+                <td style="padding-right: 5px;">{{feedback.feedback}}</td>
+
+                <td><button (click)="deleteFeedback(feedback)" class="btn btn-danger">Delete</button>
+                </td>
+                
+            </tr><br>
+            <div class="container">
+            <tr *ngIf="updateFeedbackStatus">
+                <div class="container">
+                <div style="width: 100%;" class="form-center">
+
+                    <form (ngSubmit)="newFeedbackUpdates()">
+                        <div class="form-group row">
+                          <label  class="col-sm-2 col-form-label">Ticket Id</label> 
+                          <div class="col-sm-5">
+                          <input type="text" class="form-control" name="ticketId"
+                                [(ngModel)]="feedbackUpdating.ticketId" placeholder="Enter ticked Id">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <input type="text" class="form-control" name="customerEmail"
+                                [(ngModel)]="feedbackUpdating.customerEmail" placeholder="Enter email">
+                        </div>
+
+                        <div class="form-group row">
+                            <input type="text" class="form-control" name="feedback"
+                                [(ngModel)]="feedbackUpdating.feedback" placeholder="Enter feedback">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                </div>
+            </tr>
+            </div>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
