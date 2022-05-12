@@ -1,6 +1,5 @@
 package com.crs.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.crs.model.Complaints;
 import com.crs.repository.ComplaintRepository;
 import com.crs.service.ComplaintServiceImpl;
-
-
 
 @CrossOrigin("*")
 @RestController
@@ -47,33 +43,6 @@ public class ComplaintsController {
 		return (List<Complaints>) complaints;
 	}
 	
-//	@GetMapping("/getAllComplaintsByEmail/{engineerEmail}")
-//	public List<Complaints> getAllComplaintsByEngineerEmail(@PathVariable("engineerEmail") String engineerEmail){
-//		System.out.println("inside complaints controller -- "+engineerEmail);
-//		
-//		List<Complaints> complaints = (List<Complaints>) complaintServiceImpl.findComplaintByEngineerEmail(engineerEmail);
-//		return (List<Complaints>) complaints;
-//	}
-	
-
-	@PostMapping("/getAllComplaintsByTicketIds")
-	public List<Complaints> getAllComplaintsByTicketIds(@RequestBody int[] ticketIds){
-		
-		System.out.println("ticket Ids from Backend -- "+ticketIds);
-		List<Complaints> complaints = new ArrayList<Complaints>();
-		for (int i=0; i<ticketIds.length;i++ ) {
-			System.out.println(ticketIds[i]);
-			complaints.add(complaintServiceImpl.findComplaintById(ticketIds[i]));
-		}
-		return  (List<Complaints>) complaints;
-		
-	}
-	
-	@GetMapping("/getComplaintById/{ticketId}")
-	public Complaints getComplaintById(@PathVariable("ticketId") int ticketId){
-		Complaints complaint = complaintServiceImpl.findComplaintById(ticketId);
-		return complaint;
-	}
 	
 	@PostMapping(path = "/addComplaint")
 	public @ResponseBody void addComplaint(@RequestBody Complaints complaint) {
@@ -81,30 +50,17 @@ public class ComplaintsController {
 		
 	}
 	
-	@DeleteMapping(path = "/deleteComplaintById/{ticketId}")
+	@DeleteMapping("/deleteComplaintById/{ticketId}")
 	public @ResponseBody void deleteComplaintById(@PathVariable("ticketId") int ticketId) {
 		Complaints complaint =complaintServiceImpl.findComplaintById(ticketId);
 		complaintServiceImpl.deleteComplaint(complaint);
 		
 	}
-	@PutMapping("/updateComplaint")
-	public boolean updateComplaint(@RequestBody Complaints complaint)
-	{
-		System.out.println(complaint.getTicketId()+"-------");
-		Complaints existingComplaint = complaintServiceImpl.findComplaintById(complaint.getTicketId());
-		existingComplaint.setComplaint(complaint.getComplaint());
-		existingComplaint.setCustomerEmail(complaint.getCustomerEmail());
-		existingComplaint.setPincode(complaint.getPincode());
-		existingComplaint.setStatus(complaint.getStatus());
-		complaintRepository.save(existingComplaint);
-		
-		return true;
-	}
 	
 	@GetMapping("/getByengineerEmail/{engineerEmail}")
     public List<Complaints> getByengineerEmail(@PathVariable("engineerEmail") String engineerEmail){
         System.out.println("inside complaints controller -- "+engineerEmail);
-        List<Complaints> complaints = (List<Complaints>)  complaintServiceImpl.findByengineerEmail(engineerEmail);
+        List<Complaints> complaints = (List<Complaints>)  complaintRepository.findByEngineerEmail(engineerEmail);
         return (List<Complaints>) complaints;
     }
 

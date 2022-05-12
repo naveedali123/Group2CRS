@@ -1,6 +1,5 @@
 package com.crs.controller;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -15,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crs.model.EngineerDuty;
 import com.crs.model.Engineers;
-import com.crs.model.Managers;
 import com.crs.repository.EngineerRepository;
 import com.crs.service.EngineerDutyServiceImpl;
 import com.crs.service.EngineerService;
@@ -42,60 +39,21 @@ public class EngineerController {
 		List<Engineers> engineers = (List<Engineers>) engineerService.fetchAllEngineers();
 		return engineers;
 	}
-	
-	@GetMapping("/getAllEngineerMails")
-	public List<String> getAllEngineerMails(){
-		List<Engineers> engineers = (List<Engineers>) engineerService.fetchAllEngineers();
-		List<String> engineerMails = new ArrayList<String>();
-		for (int i =0; i< engineers.size(); i++) {
-			engineerMails.add(engineers.get(i).getEngineerEmail());
-		}
-		return engineerMails;
-	}
-	
-//	@PostMapping("/login")
-//	public List<Integer> validateEngineer(@RequestBody Object loginDetails) throws NoSuchFieldException {
-//		
-//			String engineerEmail = (String) ((LinkedHashMap) loginDetails).get("engineerEmail");
-//			String engineerPassword = (String) ((LinkedHashMap) loginDetails).get("engineerPassword");
-//			List<Integer> ticketIds = new ArrayList<Integer>();
-//			List<EngineerDuty> engineerDuties = (List<EngineerDuty>) engineerDutyServiceImpl.findEngineerDutyByEmail(engineerEmail);
-//			
-//			Boolean engineerLoginStatus = engineerService.validateEngineer(engineerEmail,engineerPassword );
-//			if(engineerLoginStatus) {
-//				for(int i=0;i<engineerDuties.size();i++) {
-//					ticketIds.add(engineerDuties.get(i).getTicketId());
-//				}
-//				
-//				return ticketIds;
-//			}
-//			return null;
-//			
-//	} 
-	
+		
 	@PostMapping("/login")
 	public Engineers validateEngineer(@RequestBody Object loginDetails) throws NoSuchFieldException {
 		
 		String engineerEmail = (String) ((LinkedHashMap) loginDetails).get("engineerEmail");
 		String engineerPassword = (String) ((LinkedHashMap) loginDetails).get("engineerPassword");
-		//List<Integer> ticketIds = new ArrayList<Integer>();
-		//List<EngineerDuty> engineerDuties = (List<EngineerDuty>) engineerDutyServiceImpl.findEngineerDutyByEmail(engineerEmail);
-		
+			
 		Boolean engineerLoginStatus = engineerService.validateEngineer(engineerEmail,engineerPassword );
-		if(engineerLoginStatus) {
-//			for(int i=0;i<engineerDuties.size();i++) {
-//				ticketIds.add(engineerDuties.get(i).getTicketId());
-//			}
-			
+		if(engineerLoginStatus) {	
 			Engineers engineer= engineerRepository.findById(engineerEmail).get();
-			
 			return engineer;
 		}
 		return null;
 		
 } 
-	
-	
 	
 	@PostMapping(path = "/addEngineer")
 	public @ResponseBody void addEngineer(@RequestBody Engineers engineer) {

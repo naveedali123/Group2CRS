@@ -54,18 +54,5 @@ public class FeedbackController {
 		feedbackServiceImpl.deleteFeedback(feedback);
 		
 	}
-	@PutMapping("/updateFeedback")
-	public boolean updateFeedback(@RequestBody Feedbacks feedback)
-	{
-		System.out.println(feedback.getTicketId()+"-------");
-		Feedbacks existingFeedbacks = feedbackServiceImpl.findFeedbackById(feedback.getFeedbackId());
-		existingFeedbacks.setTicketId(feedback.getTicketId());
-		existingFeedbacks.setCustomerEmail(feedback.getCustomerEmail());
-		existingFeedbacks.setFeedback(feedback.getFeedback());
-		
-		feedbackRepository.save(existingFeedbacks);
-		
-		return true;
-	}
 	
 }

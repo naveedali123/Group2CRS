@@ -20,10 +20,6 @@ public class ManagerServiceImpl implements ManagerService {
 	@Autowired
 	ComplaintRepository complaintRepository;
 
-//	@Override
-//	public List<Managers> fetchAllManagers() {
-//		return managerRepository.findAll();
-//	}
 
 	@Override
 	public void saveManager(Managers manager) {

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crs.model.Customers;
-import com.crs.model.Managers;
 import com.crs.repository.CustomerRepository;
 import com.crs.service.CustomerService;
 
@@ -41,8 +40,8 @@ public class CustomerController {
 	@PostMapping("/login")
 	public Customers validateCustomer(@RequestBody Object loginDetails) throws NoSuchFieldException {
 		
-			String customerEmail = (String) ((LinkedHashMap) loginDetails).get("customerEmail");
-			String customerPassword = (String) ((LinkedHashMap) loginDetails).get("customerPassword");
+			String customerEmail = (String) ((LinkedHashMap<?, ?>) loginDetails).get("customerEmail");
+			String customerPassword = (String) ((LinkedHashMap<?, ?>) loginDetails).get("customerPassword");
 			
 			Boolean customerLoginStatus = customerService.validateCustomer(customerEmail,customerPassword);
 			if (customerLoginStatus) {

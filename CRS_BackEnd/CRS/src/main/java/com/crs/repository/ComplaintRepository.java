@@ -12,7 +12,6 @@ public interface ComplaintRepository extends CrudRepository<Complaints, Integer>
 
 	List<Complaints> findComplaintByPincode(String managerPincode); 
 
-//	List<Complaints> findComplaintByEngineerEmail(String engineerEmail);
 	
 	List<Complaints> findByEngineerEmail(String engineerEmail);
 
