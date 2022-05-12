@@ -1,0 +1,85 @@
+<div class="home-page">
+  <app-header></app-header>
+  <header>
+    <button type="primary" class="logout-button" (click)="logoutAdmin()">
+      LOGOUT
+    </button>
+  </header>
+  <div class="view-customer-div">
+    <div>
+      <div class="customer-detail-menu-card">
+        <div>
+          <span class="after-customer-login-page-menu-title">Customer Dashboard </span>
+          <button class="customer-detail-menu-button" variant="primary">
+            <a href="/customer-dashboard">Add Complaint</a>
+          </button>
+          <br />
+          <button class="customer-detail-menu-button" variant="primary">
+            <a href="/customer-complaint-status">Complaint Status</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <span class="head">Complaints</span>
+      </div>
+      <table class="center">
+        <thead>
+          <tr>
+            <th scope="col">Ticket Id</th>
+            <th scope="col">Customer Email</th>
+            <th scope="col">Complaint</th>
+            <th scope="col">Pincode</th>
+            <th scope="col">status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let complaint of complaints">
+            <td scope="row">{{ complaint.ticketId }}</td>
+            <td>{{ complaint.customerEmail }}</td>
+            <td>{{ complaint.complaint }}</td>
+            <td>{{ complaint.pincode }}</td>
+            <td>{{ complaint.status }}</td>
+            <td>
+              <button
+                class="btn btn-danger"
+                (click)="updateFeedback(complaint)"
+              >
+                Send Feedback
+              </button>
+            </td>
+          </tr>
+          <br />
+        </tbody>
+      </table>
+      <br />
+      <div
+        variant="outlined"
+        *ngIf="updateComplaintStatus"
+        class="home-page-admin-card"
+      >
+        <form action="">
+          <span>Add Feedback</span><br />
+          <textarea
+            placeholder="Enter Feedback"
+            class="home-page-textarea"
+            name="complaint"
+            (change)="feedbackSelected($event)"
+            required
+          ></textarea>
+          <Button
+            type="primary"
+            class="home-page-login-button"
+            (click)="submitFeedback()"
+          >
+            Add Feedback
+          </Button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

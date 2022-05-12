@@ -1,0 +1,116 @@
+<div class="home-page">
+  <app-header></app-header>
+  <div style="display: flex; align-content: center">
+    <div style="display: block">
+      <img
+        src="https://th.bing.com/th/id/OIP.nVplRtL3pvVRkjCYwMeQoQHaHa?pid=ImgDet&rs=1"
+        alt="admin"
+        class="admin-logo"
+      />
+      <Button
+        type="primary"
+        class="home-page-login-button"
+        (click)="gotoAdminLogin()"
+      >
+        Admin Login
+      </Button>
+    </div>
+
+    <div>
+      <img
+        src="https://cdn2.iconfinder.com/data/icons/financial-tools/512/worker-256.png"
+        alt="admin"
+        class="manager-logo"
+      />
+      <Button
+        type="primary"
+        class="home-page-login-button"
+        (click)="gotoManagerLogin()"
+      >
+        Manager Login
+      </Button>
+    </div>
+    <div>
+      <img
+        src="https://th.bing.com/th/id/OIP.PlNtcOA1ONkQE-VxaRn_ogHaIu?pid=ImgDet&rs=1"
+        alt="admin"
+        class="engineer-logo"
+      />
+      <Button
+        type="primary"
+        class="home-page-login-button"
+        (click)="gotoEngineerLogin()"
+      >
+        Engineer Login
+      </Button>
+    </div>
+    <div>
+      <img
+        src="https://f0.pngfuel.com/png/577/307/human-with-circle-logo-png-clip-art.png"
+        alt="admin"
+        class="customer-logo"
+      />
+      <Button
+        type="primary"
+        class="home-page-login-button"
+        (click)="gotoCustomerLogin()"
+      >
+        Customer Login
+      </Button>
+    </div>
+    <div>
+      <img
+        src="https://e7.pngegg.com/pngimages/710/665/png-clipart-computer-icons-user-profile-symbol-register-button-miscellaneous-blue.png"
+        alt="admin"
+        class="customer-logo"
+      />
+      <Button
+        type="primary"
+        class="home-page-login-button"
+        (click)="gotoRegisterCustomer()"
+      >
+        Regsiter Customer
+      </Button>
+    </div>
+  </div>
+  <div id="gfg">
+    <mdb-carousel isControls="true" [animation]="'slide'">
+      <mdb-carousel-item>
+        <img
+          class="banner"
+          src="https://omghcontent.affino.com/AcuCustom/Sitename/DAM/107/complaints-MIN.jpg"
+          alt="banner1"
+        />
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img
+          class="banner"
+          src="https://www.startupdonut.co.uk/sites/default/files/handlingcustomercomplaints_346332617.jpg"
+          alt="banner2"
+        />
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img
+          class="banner"
+          src="https://www.rhnuttall.co.uk/wp-content/uploads/2020/02/customer-complaint.jpg"
+          alt="banner3"
+        />
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img
+          class="banner"
+          src="https://th.bing.com/th/id/R.af57563e771abdf37015910a084ad044?rik=s1oPTttvV3%2fw8w&riu=http%3a%2f%2fgpgadchiroli.ac.in%2fgpgadchiroli_new%2fgrievance%2fslider%2fslide1.png&ehk=D6uLx2xX2xI7yYbwtmMXxUnCADhpoxgmie5GCBkzQxs%3d&risl=&pid=ImgRaw&r=0"
+          alt="banner4"
+        />
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img
+          class="banner"
+          src="https://th.bing.com/th/id/R.bb2fdd81eef7428d0d3f32192ef020a6?rik=lJY86GfeHMfNOA&riu=http%3a%2f%2fedge.alluremedia.com.au%2fm%2fg%2f2015%2f03%2fCustomer-Complaints.jpg&ehk=ndWkJuUOqqkH34w5e7RoquIHvfCzXXFSZpxjoZs9Gsk%3d&risl=&pid=ImgRaw&r=0"
+          alt="banner5"
+        />
+      </mdb-carousel-item>
+    </mdb-carousel>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -35,7 +35,6 @@ export class AdminService {
     'http://localhost:9091/complaints/deleteComplaintById';
   private updateComplaintUrl: string =
     'http://localhost:9091/complaints/updateComplaint';
-
   private getAllFeedbacksUrl: string =
     'http://localhost:9091/feedbacks/getAllFeedbacks';
   private deleteFeedbackByFeedbackIdUrl: string =
@@ -62,7 +61,6 @@ export class AdminService {
     );
   }
 
-  // engineers
   getAllEngineers() {
     return this._httpClient.get<Engineers[]>(this.getAllEngineersUrl);
   }
@@ -75,7 +73,6 @@ export class AdminService {
     );
   }
 
-  //customers
   getAllCustomers() {
     return this._httpClient.get<Customers[]>(this.getAllCustomersUrl);
   }
@@ -87,13 +84,13 @@ export class AdminService {
       }
     );
   }
+
   newCustomerUpdates(customerPincode: string, customerEmail: string) {
     return this._httpClient.put(
       `${this.updateCustomerUrl}/${customerEmail}`,
       customerPincode
     );
   }
-  //complaints
 
   getAllComplaints() {
     return this._httpClient.get<Complaints[]>(this.getAllComplaintsUrl);
@@ -111,7 +108,6 @@ export class AdminService {
     return this._httpClient.put(this.updateComplaintUrl, complaintUpdating);
   }
 
-  //feedbacks
   getAllFeedbacks() {
     return this._httpClient.get<Feedbacks[]>(this.getAllFeedbacksUrl);
   }

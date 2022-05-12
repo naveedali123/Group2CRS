@@ -1,0 +1,244 @@
+.home-page {
+  font-family: GlacialIndifference;
+  background-image: url("../../images/background-image.png");
+  width: 100%;
+  height: 1024px;
+  background-size: cover;
+}
+
+.view-customer-div {
+  display: flex;
+}
+
+.app-list {
+  margin-top: 16px;
+}
+
+header {
+  background-color: black;
+  left: 0;
+  right: 0;
+  top: 70px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  font-family: "GlacialIndiffernce";
+}
+
+.logout-button {
+  height: 45px;
+  width: 10%;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  background: #71b7e6;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-left: 105rem;
+  margin-top: 2px;
+}
+
+.logout-button:hover {
+  background: #d62d20;
+}
+
+.customer-detail-menu-card {
+  width: 300px;
+  height: 650px;
+  min-height: 92.3vh;
+  padding: 10px;
+  padding-left: 40px;
+  border-radius: 1px;
+  margin-bottom: -10px;
+  display: block;
+  background: #fff;
+  border: 1px solid #fff;
+  opacity: 0.7;
+}
+
+.after-customer-login-page-title {
+  font-size: 40px;
+  font-weight: 500;
+  position: relative;
+  color: #fff;
+  font-family: "GlacialIndifferenceBold";
+}
+
+.after-customer-login-page-menu-title {
+  font-size: 50px !important;
+  font-weight: 500;
+  position: relative;
+  color: #294c7c;
+  font-family: "GlacialIndifferenceBold";
+}
+
+.customer-detail-input {
+  height: 45px;
+  width: 400px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  font-size: 18px;
+  margin: 20px 0px 12px 0px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  margin-left: 15px;
+}
+
+.customer-detail-menu-button {
+  height: 40px;
+  width: 200px;
+  margin-top: 15px;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  background: #294c7c;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.customer-detail-menu-button:hover {
+  background-color: red;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.button {
+  background-color: #910858;
+  border: none;
+  border-radius: 50px 20px;
+  color: rgb(255, 255, 255);
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.container {
+  float: right;
+  width: 100%;
+}
+
+.center {
+  font-family: monospace;
+  border-collapse: collapse;
+  width: 100%;
+  margin-left: 150px;
+  margin-top: 15px;
+}
+
+tbody.td.button.danger {
+  background-color: #70dd16;
+  color: white;
+  padding: 8px 15px;
+  margin: 30px 30px;
+  cursor: pointer;
+  border: none;
+  font-size: 15px;
+}
+
+.head {
+  font-family: GlacialIndiffernce;
+  text-align: center;
+  font-size: 50px !important;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 460px;
+}
+
+.center td,
+.center th {
+  border: 2px solid #5f4636;
+  padding: 8px;
+  font-size: 15px;
+  justify-content: center;
+}
+
+.center tr {
+  background-color: rgb(221, 221, 221);
+  height: 50px;
+}
+
+.center th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #1394ea;
+  color: rgb(255, 255, 255);
+}
+
+.tr div.customer-update {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  display: block;
+  border: 2px rgb(12, 1, 1);
+  border-radius: 4px;
+  box-sizing: border-box 1px black;
+}
+
+.home-page-admin-card {
+  height: 50%;
+  margin-top: 40px;
+  margin-left: 180px;
+  padding: 10px;
+  border-radius: 20px;
+  background: transparent;
+}
+
+.home-page-input {
+  height: 45px;
+  width: 400px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  font-size: 18px;
+  margin: 20px 0px 12px 0px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.home-page .home-page-input:focus {
+  border-color: #9b59b6;
+}
+
+.home-page-login-button {
+  height: 45px;
+  width: 18%;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  background: #9b59b6;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.home-page-login-button:hover {
+  background: #71b7e6;
+}
+
+.home-page-admin-card span {
+  color: #fff;
+  font-size: 30px;
+}

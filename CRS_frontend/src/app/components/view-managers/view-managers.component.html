@@ -1,0 +1,102 @@
+<div class="home-page">
+  <app-header></app-header>
+  <header>
+    <button type="primary" class="logout-button" (click)="logoutAdmin()">
+      LOGOUT
+    </button>
+  </header>
+  <div class="view-customer-div">
+    <div>
+      <div class="customer-detail-menu-card">
+        <div>
+          <span class="after-customer-login-page-menu-title">Admin Dashboard </span>
+          <button class="customer-detail-menu-button" variant="primary">
+            <a href="/admin-view-managers">View Managers</a>
+          </button>
+          <br />
+          <button class="customer-detail-menu-button" variant="primary">
+            <a href="/admin-view-engineers">View Engineers</a>
+          </button>
+          <br />
+          <button class="customer-detail-menu-button" variant="primary">
+            <a href="/admin-view-customers">View Customers</a>
+          </button>
+          <br />
+          <button class="customer-detail-menu-button" variant="primary">
+            <a href="/admin-view-complaints">View Complaints</a>
+          </button>
+          <br />
+          <button class="customer-detail-menu-button" variant="primary">
+            <a href="/admin-view-feedbacks">View Feedbacks</a>
+          </button>
+          <br />
+          <button class="customer-detail-menu-button" variant="primary">
+            <a href="admin-add-Manager">Add Managers</a>
+          </button>
+          <br />
+          <button class="customer-detail-menu-button" variant="primary">
+            <a href="admin-add-engineer">Add Engineers</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div>
+      <div>
+        <span class="head"> Managers </span>
+      </div>
+      <table class="center">
+        <thead>
+          <tr>
+            <th scope="col">Manager Email</th>
+            <th scope="col">Manager Name</th>
+            <th scope="col">Manager Pincode</th>
+            <th scope="col">Delete Manager</th>
+            <th scope="col">Edit Manager Details</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let manager of managers">
+            <td scope="row">{{ manager.managerEmail }}</td>
+            <td>{{ manager.managerName }}</td>
+            <td>{{ manager.managerPincode }}</td>
+            <td>
+              <button (click)="deleteManager(manager)" class="btn btn-danger">
+                Delete
+              </button>
+            </td>
+            <td>
+              <button (click)="updateManager(manager)" class="btn btn-primary">
+                Update
+              </button>
+            </td>
+          </tr>
+          <br />
+          <br />
+        </tbody>
+      </table>
+      <div
+        variant="outlined"
+        *ngIf="updateManagerStatus"
+        class="home-page-admin-card"
+      >
+        <form action="" (ngSubmit)="newManagerUpdates()">
+          <span>Update Manager Pincode</span><br />
+          <input
+            class="home-page-input"
+            name="customerPincode"
+            placeholder="Enter new pincode"
+            required
+            [(ngModel)]="managerUpdating.managerPincode"
+          />
+          <br />
+          <Button type="primary" class="home-page-login-button">
+            Update
+          </Button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

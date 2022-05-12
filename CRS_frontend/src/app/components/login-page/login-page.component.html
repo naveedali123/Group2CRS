@@ -1,0 +1,56 @@
+<div class="home-page">
+  <app-header></app-header>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="">Home</a>
+        </li>
+        <li>
+          <a href="login"> Admin Login </a>
+        </li>
+        <li>
+          <a href="manager-login"> Manager Login </a>
+        </li>
+        <li>
+          <a href="engineer-login">Engineer Login</a>
+        </li>
+        <li><a href="customer-login">Customer Login</a></li>
+        <li>
+          <a href="register">Register Customer</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div justify="center" class="home-page-inner-container">
+    <img
+      src="https://th.bing.com/th/id/OIP.nVplRtL3pvVRkjCYwMeQoQHaHa?pid=ImgDet&rs=1"
+      alt="admin"
+      class="admin-logo"
+    />
+    <div variant="outlined" class="home-page-admin-card">
+      <form action="" [formGroup]="loginForm" (ngSubmit)="validateAdmin()">
+        <input
+          placeholder="Enter your Email ID"
+          class="home-page-input"
+          formControlName="adminEmail"
+          name="adminEmail"
+          required
+        />
+        <br />
+        <input
+          placeholder="Enter your PassWord"
+          class="home-page-input"
+          type="password"
+          formControlName="adminPassword"
+          name="adminPassword"
+          required
+        />
+        <br />
+        <Button type="primary" class="home-page-login-button"> Login </Button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

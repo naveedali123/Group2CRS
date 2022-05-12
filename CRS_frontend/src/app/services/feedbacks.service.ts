@@ -9,12 +9,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class FeedbacksService {
+  statusUpdateDetails = {};
+
   complaint: Complaints;
+
   private sendFeedbackUrl: string =
     'http://localhost:9091/feedbacks/addFeedback';
 
   private getAllFeedbacksUrl: string =
     'http://localhost:9091/feedbacks/getAllFeedbacks';
+
   constructor(private _httpClient: HttpClient, private _router: Router) {}
 
   sendComplaintDetails(complaint: Complaints) {
@@ -25,14 +29,18 @@ export class FeedbacksService {
   getAllFeedbacks(): Observable<Feedbacks[]> {
     return this._httpClient.get<Feedbacks[]>(this.getAllFeedbacksUrl);
   }
-  sendFeedback(feedback: Feedbacks) {
-    console.log(
-      'inside feedback.service.ts',
-      feedback.customerEmail,
-      feedback.feedback,
-      feedback.ticketId
-    );
 
-    return this._httpClient.post<Feedbacks>(this.sendFeedbackUrl, feedback);
+  sendFeedback(ticketId: number, customerEmail: string, feedback: string) {
+    this.statusUpdateDetails = {
+      ticketId: ticketId,
+      customerEmail: customerEmail,
+      feedback: feedback,
+    };
+    console.log(this.statusUpdateDetails);
+
+    return this._httpClient.post(
+      this.sendFeedbackUrl,
+      this.statusUpdateDetails
+    );
   }
 }
