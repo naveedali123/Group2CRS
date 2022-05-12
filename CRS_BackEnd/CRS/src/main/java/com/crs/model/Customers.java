@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="customer")
+@Table(name="tbl_customer")
 @Setter
 @Getter
 

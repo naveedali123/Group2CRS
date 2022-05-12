@@ -38,6 +38,7 @@ public class ComplaintsController {
 		List<Complaints> complaints = (List<Complaints>) complaintRepository.findAll();
 		return complaints;
 	}
+	
 	@GetMapping("/getAllComplaintsByEmail/{customerEmail}")
 	public List<Complaints> getAllComplaintsByEmail(@PathVariable("customerEmail") String customerEmail){
 		System.out.println("inside complaints controller -- "+customerEmail);
@@ -45,6 +46,14 @@ public class ComplaintsController {
 		List<Complaints> complaints = (List<Complaints>) complaintServiceImpl.findComplaintByEmail(customerEmail);
 		return (List<Complaints>) complaints;
 	}
+	
+//	@GetMapping("/getAllComplaintsByEmail/{engineerEmail}")
+//	public List<Complaints> getAllComplaintsByEngineerEmail(@PathVariable("engineerEmail") String engineerEmail){
+//		System.out.println("inside complaints controller -- "+engineerEmail);
+//		
+//		List<Complaints> complaints = (List<Complaints>) complaintServiceImpl.findComplaintByEngineerEmail(engineerEmail);
+//		return (List<Complaints>) complaints;
+//	}
 	
 
 	@PostMapping("/getAllComplaintsByTicketIds")
@@ -92,6 +101,11 @@ public class ComplaintsController {
 		return true;
 	}
 	
-	
+	@GetMapping("/getByengineerEmail/{engineerEmail}")
+    public List<Complaints> getByengineerEmail(@PathVariable("engineerEmail") String engineerEmail){
+        System.out.println("inside complaints controller -- "+engineerEmail);
+        List<Complaints> complaints = (List<Complaints>)  complaintServiceImpl.findByengineerEmail(engineerEmail);
+        return (List<Complaints>) complaints;
+    }
 
 }

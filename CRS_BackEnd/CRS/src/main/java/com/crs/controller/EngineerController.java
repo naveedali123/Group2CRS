@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.crs.model.EngineerDuty;
 import com.crs.model.Engineers;
+import com.crs.model.Managers;
+import com.crs.repository.EngineerRepository;
 import com.crs.service.EngineerDutyServiceImpl;
 import com.crs.service.EngineerService;
 
@@ -31,6 +33,9 @@ public class EngineerController {
 	
 	@Autowired
 	EngineerDutyServiceImpl engineerDutyServiceImpl;
+	
+	@Autowired
+	EngineerRepository engineerRepository;
 	
 	@GetMapping("/getAllEngineers")
 	public List<Engineers> getAllEngineers(){
@@ -48,25 +53,48 @@ public class EngineerController {
 		return engineerMails;
 	}
 	
+//	@PostMapping("/login")
+//	public List<Integer> validateEngineer(@RequestBody Object loginDetails) throws NoSuchFieldException {
+//		
+//			String engineerEmail = (String) ((LinkedHashMap) loginDetails).get("engineerEmail");
+//			String engineerPassword = (String) ((LinkedHashMap) loginDetails).get("engineerPassword");
+//			List<Integer> ticketIds = new ArrayList<Integer>();
+//			List<EngineerDuty> engineerDuties = (List<EngineerDuty>) engineerDutyServiceImpl.findEngineerDutyByEmail(engineerEmail);
+//			
+//			Boolean engineerLoginStatus = engineerService.validateEngineer(engineerEmail,engineerPassword );
+//			if(engineerLoginStatus) {
+//				for(int i=0;i<engineerDuties.size();i++) {
+//					ticketIds.add(engineerDuties.get(i).getTicketId());
+//				}
+//				
+//				return ticketIds;
+//			}
+//			return null;
+//			
+//	} 
+	
 	@PostMapping("/login")
-	public List<Integer> validateEngineer(@RequestBody Object loginDetails) throws NoSuchFieldException {
+	public Engineers validateEngineer(@RequestBody Object loginDetails) throws NoSuchFieldException {
 		
-			String engineerEmail = (String) ((LinkedHashMap) loginDetails).get("engineerEmail");
-			String engineerPassword = (String) ((LinkedHashMap) loginDetails).get("engineerPassword");
-			List<Integer> ticketIds = new ArrayList<Integer>();
-			List<EngineerDuty> engineerDuties = (List<EngineerDuty>) engineerDutyServiceImpl.findEngineerDutyByEmail(engineerEmail);
+		String engineerEmail = (String) ((LinkedHashMap) loginDetails).get("engineerEmail");
+		String engineerPassword = (String) ((LinkedHashMap) loginDetails).get("engineerPassword");
+		//List<Integer> ticketIds = new ArrayList<Integer>();
+		//List<EngineerDuty> engineerDuties = (List<EngineerDuty>) engineerDutyServiceImpl.findEngineerDutyByEmail(engineerEmail);
+		
+		Boolean engineerLoginStatus = engineerService.validateEngineer(engineerEmail,engineerPassword );
+		if(engineerLoginStatus) {
+//			for(int i=0;i<engineerDuties.size();i++) {
+//				ticketIds.add(engineerDuties.get(i).getTicketId());
+//			}
 			
-			Boolean engineerLoginStatus = engineerService.validateEngineer(engineerEmail,engineerPassword );
-			if(engineerLoginStatus) {
-				for(int i=0;i<engineerDuties.size();i++) {
-					ticketIds.add(engineerDuties.get(i).getTicketId());
-				}
-				
-				return ticketIds;
-			}
-			return null;
+			Engineers engineer= engineerRepository.findById(engineerEmail).get();
 			
-	} 
+			return engineer;
+		}
+		return null;
+		
+} 
+	
 	
 	
 	@PostMapping(path = "/addEngineer")

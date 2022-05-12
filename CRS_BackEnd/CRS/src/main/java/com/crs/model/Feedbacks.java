@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="feedbacks")
+@Table(name="tbl_feedbacks")
 @Setter
 @Getter
 public class Feedbacks {

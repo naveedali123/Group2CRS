@@ -10,24 +10,32 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="complaints")
+@Table(name="tbl_complaints")
 @Setter
 @Getter
 public class Complaints {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int ticketId;
+	
 	private String customerEmail;
 	private String pincode;
 	private String complaint;
 	private String status = "raised";
-	private String complaint_type ;
-	public String getComplaint_type() {
-		return complaint_type;
-	}
-	public void setComplaint_type(String complaint_type) {
-		this.complaint_type = complaint_type;
-	}
+	private String engineerEmail;
+	private String complaintType;
+	public String getEngineerEmail() {
+	        return engineerEmail;
+	    }
+	    public void setEngineerEmail(String engineerEmail) {
+	        this.engineerEmail = engineerEmail;
+	    }
+	    public String getComplaintType() {
+	        return complaintType;
+	    }
+	    public void setComplaintType(String complaintType) {
+	        this.complaintType = complaintType;
+	    }
 	public int getTicketId() {
 		return ticketId;
 	}

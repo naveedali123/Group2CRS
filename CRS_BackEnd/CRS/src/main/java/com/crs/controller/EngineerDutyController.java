@@ -40,6 +40,8 @@ public class EngineerDutyController {
 		System.out.println(ticketId+"---"+customerEmail+"--"+selectedEngineer);
 		
 		EngineerDuty existingEngineersDuty = engineerDutyServiceImpl.getEngineerAssignedByTicketId(ticketId);
+		complaintServiceImpl.addEngineerToComplaint(ticketId,selectedEngineer);
+		
 		if (existingEngineersDuty==null) {
 			
 			EngineerDuty engineerDuty = new EngineerDuty();
