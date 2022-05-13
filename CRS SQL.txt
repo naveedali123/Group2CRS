@@ -1,0 +1,124 @@
+CREATE DATABASE CRS;
+
+USE DATABASE CRS;
+
+DROP TABLE IF EXISTS `tbl_admin`;
+
+CREATE TABLE `tbl_admin` (
+  `admin_email` varchar(255) NOT NULL,
+  `admin_name` varchar(255) DEFAULT NULL,
+  `admin_password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`admin_email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+LOCK TABLES `tbl_admin` WRITE;
+
+INSERT INTO `tbl_admin` VALUES ('admin@gmail.com','admin','admin@123');
+
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `tbl_complaints`;
+
+CREATE TABLE `tbl_complaints` (
+  `ticket_id` int NOT NULL,
+  `complaint` varchar(255) DEFAULT NULL,
+  `customer_email` varchar(255) DEFAULT NULL,
+  `pincode` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `complaint_type` varchar(255) DEFAULT NULL,
+  `engineer_email` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ticket_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+LOCK TABLES `tbl_complaints` WRITE;
+
+INSERT INTO `tbl_complaints` VALUES (1,'Bakvas','abc@gmail.com','123456','Escalated',NULL,'mad@gmail.com'),(2,'good','abc@gmail.com','123456','raised',NULL,'mad@gmail.com'),(3,'good','abc@gmail.com','123456',NULL,NULL,'mad@gmail.com');
+
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `tbl_customer`;
+
+CREATE TABLE `tbl_customer` (
+  `customer_email` varchar(255) NOT NULL,
+  `customer_address` varchar(255) DEFAULT NULL,
+  `customer_mobile` varchar(255) DEFAULT NULL,
+  `customer_name` varchar(255) DEFAULT NULL,
+  `customer_password` varchar(255) DEFAULT NULL,
+  `customer_pincode` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`customer_email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+LOCK TABLES `tbl_customer` WRITE;
+
+INSERT INTO `tbl_customer` VALUES ('abc@gmail.com','asd','123456985','abc','abc@123','123450'),('rishu@gmail.com','asdf','147852369','rishu','asd','123456');
+
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `tbl_engineer`;
+
+CREATE TABLE `tbl_engineer` (
+  `engineer_email` varchar(255) NOT NULL,
+  `engineer_name` varchar(255) DEFAULT NULL,
+  `engineer_password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`engineer_email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+LOCK TABLES `tbl_engineer` WRITE;
+
+INSERT INTO `tbl_engineer` VALUES ('mad@gmail.com','madhura','mav@123'),('nav@gmail.com','naveed','nav@123'),('naveed@gmail.com','naveed','nav@123');
+
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `tbl_engineer_duty`;
+
+CREATE TABLE `tbl_engineer_duty` (
+  `engineer_duty_id` int NOT NULL,
+  `customer_email` varchar(255) DEFAULT NULL,
+  `engineer_email` varchar(255) DEFAULT NULL,
+  `ticket_id` int NOT NULL,
+  PRIMARY KEY (`engineer_duty_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+LOCK TABLES `tbl_engineer_duty` WRITE;
+
+INSERT INTO `tbl_engineer_duty` VALUES (3,'abc@gmail.com','nav@gmail.com',1),(4,'abc@gmail.com','nav@gmail.com',2),(5,'abc@gmail.com','mad@gmail.com',3),(10,'abc@gmail.com','naveed@pro.com',7);
+
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `tbl_feedbacks`;
+
+CREATE TABLE `tbl_feedbacks` (
+  `feedback_id` int NOT NULL,
+  `customer_email` varchar(255) DEFAULT NULL,
+  `feedback` varchar(255) DEFAULT NULL,
+  `ticket_id` int NOT NULL,
+  PRIMARY KEY (`feedback_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+LOCK TABLES `tbl_feedbacks` WRITE;
+
+INSERT INTO `tbl_feedbacks` VALUES (4,'abc@gmail.com','aasdsd',1),(6,'abc@gmail.com','good',1),(8,'abc@gmail.com','hello',1);
+
+UNLOCK TABLES;
+
+
+DROP TABLE IF EXISTS `tbl_manager`;
+
+CREATE TABLE `tbl_manager` (
+  `manager_email` varchar(255) NOT NULL,
+  `manager_name` varchar(255) DEFAULT NULL,
+  `manager_password` varchar(255) DEFAULT NULL,
+  `manager_pincode` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`manager_email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+LOCK TABLES `tbl_manager` WRITE;
+
+INSERT INTO `tbl_manager` VALUES ('madhura@gmail.com','madhura','mad@123','123456'),('varshit@gmail.com','varshit','var@123','123450');
+
+UNLOCK TABLES;
